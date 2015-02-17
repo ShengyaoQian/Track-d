@@ -1,7 +1,18 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+var mysql = require('mysql');
+var connection =  mysql.createConnection({
+    host : "trackeddb.ctyl7vyaixcl.us-west-2.rds.amazonaws.com",
+    user : "master",
+    password: "masterpassword"
+});
+connection.connect();
 
+connection.query("use trackeddb");
+var strQuery = "select * from LOCATION";
+
+connection.query( strQuery, function(err, rows){
+    if(err) {
+        throw err;
+    }else{
+        console.log( rows );
+    }
+});
