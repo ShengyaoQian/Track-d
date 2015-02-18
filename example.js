@@ -1,8 +1,8 @@
 var mysql = require('mysql');
 var connection =  mysql.createConnection({
     host : "trackeddb.ctyl7vyaixcl.us-west-2.rds.amazonaws.com",
-    user : "master",
-    password: "masterpassword"
+    user : "",
+    password: ""
 });
 connection.connect();
 
