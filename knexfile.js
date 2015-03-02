@@ -5,7 +5,11 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      filename: './dev.sqlite3'
+      host : '127.0.0.1',
+      port : '8889',
+      user : 'root',
+      password : 'root',
+      database: 'trackeddb'
     }
   },
 
