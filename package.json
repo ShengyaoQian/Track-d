@@ -4,6 +4,8 @@
   "description": "",
   "main": "example.js",
   "dependencies": {
+    "bookshelf": "^0.7.9",
+    "knex": "^0.7.4",
     "mysql": "^2.5.4"
   },
   "devDependencies": {},
