@@ -10,10 +10,18 @@ console.log('Server running at http://localhost:3000');
 
 var models = require('./models');
 
-/* Get all events*/
+/* Get all events */
 app.get('/events', function(req, res) {
-    var Event = require('./models').Event;
-    var event_id = new Event().fetch().then(function(model) { return model.get('event_id') });
-    res.send({ event_id: 'event_id' });
+    var Events = require('./models').Events;
+    var events = new Events();
+    var json_response = [];
+	events.fetch().then(function(collection) { 
+    	collection.forEach(function (model) {
+        	var json_obj = {'event_id': model.get('event_id')};
+        	json_response.push(json_obj);
+        });
+        res.send(json_response);
+    }); 
 });
+
 

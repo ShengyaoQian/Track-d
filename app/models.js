@@ -12,10 +12,15 @@ var knex = require('knex')({
 
 var bookshelf = require('bookshelf')(knex);
 
-module.exports = {
-    /* Object maps to Event table in the database */
-    Event : bookshelf.Model.extend({
-        tableName: 'Event'
-    })
+/* Object maps to Event table in the database */
+var Event = bookshelf.Model.extend({
+    tableName: 'Event'
+});
 
-};
+var Events = bookshelf.Collection.extend({
+    model: Event
+});
+
+exports.Event = Event;
+exports.Events = Events;
+
