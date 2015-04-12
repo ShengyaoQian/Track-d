@@ -4,6 +4,7 @@
   "description": "",
   "main": "example.js",
   "dependencies": {
+    "async": "^0.9.0",
     "bookshelf": "^0.7.9",
     "express": "^4.12.3",
     "knex": "^0.7.4",

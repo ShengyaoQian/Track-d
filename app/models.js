@@ -24,3 +24,13 @@ var Events = bookshelf.Collection.extend({
 exports.Event = Event;
 exports.Events = Events;
 
+var Location = bookshelf.Model.extend({
+    tableName: 'Location'
+});
+
+var Locations = bookshelf.Collection.extend({
+    model: Location
+});
+
+exports.Location = Location;
+exports.Locations = Locations;
