@@ -6,6 +6,7 @@ exports.events = function(req, res) {
     var json_response = {'events': []};
     var callback_counts = 0;
     get_events_info(json_response, callback_counts, function() {
+        res.setHeader("Access-Control-Allow-Origin", "*");
         res.send(json_response);
     });
     
