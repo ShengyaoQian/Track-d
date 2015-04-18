@@ -6,6 +6,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/events', require('./controllers.js').events);
+app.get('/organizations', require('./controllers.js').organizations);
 
 var server = app.listen(3000, function () {
     var host = server.address().address;

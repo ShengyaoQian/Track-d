@@ -24,6 +24,7 @@ var Events = bookshelf.Collection.extend({
 exports.Event = Event;
 exports.Events = Events;
 
+/* Object maps to Location table in the database */
 var Location = bookshelf.Model.extend({
     tableName: 'Location'
 });
@@ -34,3 +35,16 @@ var Locations = bookshelf.Collection.extend({
 
 exports.Location = Location;
 exports.Locations = Locations;
+
+/* Object maps to Organization table in the database */
+var Organization = bookshelf.Model.extend({
+    tableName: 'Organization'
+});
+
+var Organizations = bookshelf.Collection.extend({
+    model: Organization
+});
+
+exports.Organization = Organization;
+exports.Organizations = Organizations;
+
