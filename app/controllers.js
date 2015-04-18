@@ -79,7 +79,7 @@ function get_organization_info(json_response, callback_counts, callback) {
                             'lat': model.get('lat'),
                             'log': model.get('log')};
                 json_obj['loc_info'] = loc_info;
-                json_response.events.push(json_obj);
+                json_response.organizations.push(json_obj);
                 callback_counts ++;
                 if (callback_counts == collection_size) {
                     callback(json_response);
