@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 app.get('/', function(req, res) {
-    res.send('hello world');
+    res.send('Hello Kitty');
 });
 
 app.get('/events', require('./controllers.js').events);
