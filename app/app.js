@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 app.get('/', function(req, res) {
     res.send('hello world');
@@ -8,7 +9,10 @@ app.get('/', function(req, res) {
 app.get('/events', require('./controllers.js').events);
 app.get('/organizations', require('./controllers.js').organizations);
 
-var server = app.listen(3000, function () {
+app.use(bodyParser.json()); 
+app.post('/post_event', require('./controllers.js').post_event);
+
+var server = app.listen(8081, function () {
     var host = server.address().address;
     var port = server.address().port;
 

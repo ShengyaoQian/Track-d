@@ -1,7 +1,7 @@
 var models = require('./models');
 var async = require('async');
 
-/* Get all events */
+
 exports.events = function(req, res) {
     var json_response = {'events': []};
     var callback_counts = 0;
@@ -110,6 +110,15 @@ function build_org_json_object(model, callback_counts, collection_size, json_res
         };
     });
 
+};
+
+exports.post_event = function(req, res) {
+    if (req.body) {
+        res.json(req.body);
+    } else {
+        res.send('No request object');
+    }
+    
 };
 
 
