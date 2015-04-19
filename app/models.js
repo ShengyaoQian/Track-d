@@ -1,10 +1,10 @@
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : '127.0.0.1',
-    port     : '8889',
-    user     : 'root',
-    password : 'root',
+    host     : 'trackeddb.ctyl7vyaixcl.us-west-2.rds.amazonaws.com',
+    port     : '3306',
+    user     : 'master',
+    password : 'trackd_jlmgs',
     database : 'trackeddb',
     charset  : 'utf8'
   }
