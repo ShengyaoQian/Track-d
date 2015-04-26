@@ -114,11 +114,20 @@ function build_org_json_object(model, callback_counts, collection_size, json_res
 
 exports.post_event = function(req, res) {
     if (req.body) {
-        res.json(req.body);
+        json_request = req.body['Data'];
+        if (json_request) {
+            var Event = require('./models').Event;
+            for (var i in json_request) {
+                var event = new Event(json_request[i]);
+                event.save();
+            }
+            res.send(json_request);
+        } else {
+            res.send('no data supplied');
+        }
     } else {
         res.send('No request object');
-    }
-    
+    }   
 };
 
 
