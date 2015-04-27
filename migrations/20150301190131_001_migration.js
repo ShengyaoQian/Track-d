@@ -10,8 +10,8 @@ exports.up = function(knex, Promise) {
             table.bigIncrements('location_id').primary().unsigned().index();
             table.string('name', 50);
             table.string('address', 50);
-            table.float('lat');
-            table.float('log');
+            table.float('lat', 13, 10);
+            table.float('log', 13, 10);
         }),
 
         /* Create Event table. */
