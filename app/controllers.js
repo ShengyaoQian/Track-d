@@ -14,7 +14,10 @@ exports.events = function(req, res) {
 function get_events_info(json_response, callback_counts, callback) {
     var Events = require('./models').Events;
     var events = new Events();
-    events.fetch().then(function (collection) { 
+    var now = new Date();
+    events.query(function(qb) {
+        qb.where('event_time', '>', now);
+    }).fetch().then(function (collection) { 
         var collection_size = Object.keys(collection.models).length;
         if (collection_size == 0) {
                 callback(json_response);
