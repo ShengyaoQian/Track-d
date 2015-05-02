@@ -6,6 +6,7 @@ app.get('/', function(req, res) {
     res.send('Hello Kitty');
 });
 
+app.get('/events_today', require('./controllers.js').events_today);
 app.get('/events', require('./controllers.js').events);
 app.get('/organizations', require('./controllers.js').organizations);
 
