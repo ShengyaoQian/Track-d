@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Track'd</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
+	
+	 
+	 <!-- other page scripts -->
+      <link rel="import" href="common.html">
+
+  </head>
+  <body>
+	<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+	   	    <a class="navbar-brand" href="index.html">
+	        <img id="logo" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+<!-- END Nav -->
+
+     <!-- Left Side Bar -->
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li id="search-container">
+                        <div class="form-group">
+                            <input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+                            <input id="search-icon" type="image" src="img/search_icon.png">
+                        </div>
+                    </li>
+                    <li id="m-item-filter">	
+                        <div  id="m-filter">	
+                            <label class="m-filter" ><input type="radio" name="optradio"> Event </label>
+                            <label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+                        </div>
+                    </li>
+                      <li><a id="m-item1" href="#">My Account</a></li>
+		              <li><a id="m-item2" href="createNew.html">Add New</a></li>
+		              <li><a id="m-item3" href="#">Manage Events</a></li>
+		              <li><a id="m-item4" href="#">Surprise Me!</a></li>
+		              <li><a id="m-item5" href="support.html">Support</a></li>
+		              <li><a id="m-item6" href="about.html">About</a></li>
+                </ul>
+            </div>
+
+	<div class="submission_form">
+			<div id="filter">	
+			<h4>Add New</h4>
+			<form class="form-inline">
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Name</label>
+			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Name">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Facebook Export Link">
+			  </div>
+			  <label id="filter-event"><input type="radio" name="optradio"> Event </label>
+				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
+				<div class="form-group">
+			    <label class="sr-only" for="exampleInputEmail3">Name</label>
+			    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Date">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Time">
+			  </div>
+			  <textarea class="form-control" rows="100" placeholder="Description"></textarea>
+			   <div class="form-group">
+			    <label class="sr-only" for="exampleInputPassword3">Facebook Export Link</label>
+			    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Location">
+			  </div>
+			  	<button id = "repeat" type ="button" onclick ="addImage()">x Repeat</button>
+			  	<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
+				<div id="week">	
+				<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
+				<button type ="button" id="week-t"class ="btn-week">Tue</button>
+				<button type ="button" id="week-w" class ="btn-week">Wed</button>
+				<button type ="button" id="week-th" class ="btn-week">Thur</button>
+				<button type ="button" id="week-f" class ="btn-week">Fri</button>
+				<button type ="button" id="week-s" class ="btn-week">Sat</button>
+				<button type ="button" id="week-su"class ="btn-week">Sun</button>
+				</div>
+				
+				<Button type="submit" id = "submit" formaction=" http://tracked-server-dev.elasticbeanstalk.com/post_event" formmethod="POST">Post</Button>
+
+			  <div class="checkbox">
+			    <label>
+			      <input type="checkbox"> Remember me
+			    </label>
+			  </div>
+			  <button type="submit" class="btn btn-default">Sign in</button>
+			</form>
+			<!-- <br>
+            
+            <form >
+            <div class="column">
+				Name:<br>
+				<input type="text" name="name" placeholder ="Name">
+				<br>
+				<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+				<label id="filter-place"><input type="radio" name="optradio"> Place </label>
+				<br>
+				Description:<br>
+				<input type="text" name="description" placeholder ="Description">
+				<br>
+				Host:<br>
+				<input type="text" name="host" placeholder ="Host">
+				<br>
+				Date:<br>
+				<input type="text" name="date" placeholder ="Date">
+				<br>
+				Time:<br>
+				<input type="text" name="time" placeholder ="Time">
+				<br>
+				Location:<br>
+				<input type="text" name="location" placeholder ="Location">
+				<br>
+				Event Link:<br>
+				<input type="text" name="link" placeholder ="Export From Facebook (Event Link)">
+				<br>
+				<br>
+				
+				<button id = "addImage" type ="button" onclick ="addImage()">+ Add Image</button>
+				<div id="week">	
+				<button type ="button" id="week-m" class ="btn-week" onclick="activateItem(this); return false;">Mon</button>
+				<button type ="button" id="week-t"class ="btn-week">Tue</button>
+				<button type ="button" id="week-w" class ="btn-week">Wed</button>
+				<button type ="button" id="week-th" class ="btn-week">Thur</button>
+				<button type ="button" id="week-f" class ="btn-week">Fri</button>
+				<button type ="button" id="week-s" class ="btn-week">Sat</button>
+				<button type ="button" id="week-su"class ="btn-week">Sun</button>
+				</div>
+				
+				<Button type="submit" id = "submit" formaction="delete.php" formmethod="POST">Post</Button>
+			</div>
+			
+		</form> -->
+
+	
+	</div>
+
+	<Button id = "cancel" type ="button" onclick ="location.href='http://trackd.info/index.html'">Cancel</Button>
+	<!-- our own JavaScript files -->
+    <script src="js/newPost.js"></script>
+  </body>
+</html>
+

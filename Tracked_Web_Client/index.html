@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" id="ng-app" ng-app="myApp">
+<head>
+	<title>Trackd Events</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/getAllEventDetails.js"></script>
+
+</head>
+
+
+<body ng-controller="MainControl">
+	<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <img id="logo" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+      <!-- <center>
+	      <div class"login">
+		      <form class="navbar-form navbar-right" role="search">
+	                <label>
+	                	<span>UW E-mail</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="username" placeholder="">
+		                </div>
+	               </label>
+	                <label>
+	                	<span>Password</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="password" placeholder="">
+
+		                </div>
+	                </label>
+	            <input type="submit" value="Login" class="sub-btn"/>
+	            <input type="submit" value="Sign Up" class="reg-btn"/>
+		      </form>
+	      </div>
+      </center> -->
+	  </div>
+	</nav>
+<!-- END Nav -->
+<!-- Left Side Bar -->
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+        	<li id="search-container">
+        		<div class="form-group">
+	            	<input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+	         		<input id="search-icon" type="image" src="img/search_icon.png">
+	        	</div>
+    		</li>
+        	<li id="m-item-filter">	
+				<div  id="m-filter">	
+					<label class="m-filter" ><input type="radio" name="optradio"> Event </label>
+					<label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+				</div>
+			</li>
+            <li><a id="m-item1" href="#">My Account</a></li>
+            <li><a id="m-item2" href="createNew.html">Add New</a></li>
+            <li><a id="m-item3" href="#">Manage Events</a></li>
+            <li><a id="m-item4" href="#">Surprise Me!</a></li>
+            <li><a id="m-item5" href="support.html">Support</a></li>
+            <li><a id="m-item6" href="about.html">About</a></li>
+        </ul>
+    </div>
+    <!-- Left Side Bar ENDS -->
+	<div class="list"></div>
+	<!-- <div class="row">
+		<div id="filter">	
+			<h4>Filter</h4>
+			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
+
+	</div>
+ -->
+	<div class="event-container" id="ng-app" ng-app="myApp" ng-controller="EventsCtrlAjax">
+		<div class="row" >
+			<div class="col-md-3" ng-repeat="(key, val) in events">
+				<div class="event-display" >
+					<a href="#"><img class="event-img" src="img/act.jpg" alt="Asians Collaborating Together Conference"/></a>
+		  			 	<h5 class="title">{{val.e_name}}</h5>
+		  				<p class="day">{{val.e_sTime | date:'EEE, MMM dd, y'}}</p>
+		  				<p class="time">{{val.e_sTime | date:'shortTime'}} - {{val.e_eTime | date:'shortTime'}}</p>
+		  				<p class="place">{{val.loc_info.name}}</p>
+		  				<p class="hosted-by">Hosted by: <span class="host">Asian Coalition for Equality</span></p> 
+	  				</div>
+				</div>
+			</div>
+	</div>
+	<center><div id="no-event"><h4>No more to display</h4></div></center>
+
+	<form action="mapView.html">
+	<button type="submit" class="map-btn">Map View<img class="map-marker" src="img/marker30-01.png"></button></form>
+	
+</body>
+</html>

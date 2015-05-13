@@ -1,0 +1,562 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+#nav {
+	background-color: #5C2965;
+	padding: 10px;
+	color: #D3D3D3;
+	font-size: 15px;
+	font-weight: .1em;
+}
+
+form.navbar-form {
+	border-width: 0 !important;
+}
+
+#logo {
+	width: 10%;
+}
+
+#logo-logged-in {
+	width: 7%;
+}
+
+h4 {
+	color: #696969;
+	display:inline;
+	margin-right: 50px;
+}
+
+.submission_form {
+     position:relative;
+     margin: 250px; 
+     float:center; 
+
+}
+
+.sidebar-nav {
+	list-style: none;
+	position: absolute;
+	top: 71px;
+	width: 250px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #e7e4e7;
+	font-weight: bold;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+    border-bottom: solid #575757 .1em;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #5C2965;
+}
+
+li#search-container {
+	vertical-align: 50%;
+	padding: 1em 0em 0em .5em;
+	border: none;
+}
+
+#search {
+	background-color: #AB87AD;
+	color: #5C2965;
+	border: none;
+	padding: 10px !important;
+}
+
+#search::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #5C2965;
+}
+#search:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #5C2965;
+   opacity:  1;
+}
+#search::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #5C2965;
+   opacity:  1;
+}
+#search:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #5C2965;
+}
+
+#search-icon {
+	width: 28px;
+	padding: 5px;
+	background-color: #5C2965;
+	margin-top: -28px;
+	margin-left: 205px;
+}
+
+#m-item-filter {
+	width: 250px;
+	margin: 0px !important;
+	margin:20px;
+}
+
+#m-filter {
+	color: #5C2965;
+}
+
+.m-filter {
+	margin: 0px 20px !important;
+	height: 30px;
+	text-align: left;
+	display: inline;
+}
+
+#m-item1 {
+	color: #5C2965;
+}
+
+#m-item2 {
+	color: #D64857;
+}
+
+#m-item3 {
+	color: #9B375E;
+}
+
+#m-item4 {
+	color: #D64857;
+}
+
+#m-item5 {
+	color: #EBC22C;
+}
+
+#m-item6 {
+	color: #5C2965;
+}
+	
+#filter {
+	margin-left: 50px;
+}
+
+#right-sidebar {
+	top: 72px;
+	left: 1098px;
+	font-weight: normal;
+}
+
+#org-logo-container {
+	float: left;
+}
+
+#org-tagline {
+	font-style: italic;
+	font-weight: normal;
+	display: block;
+	margin-left: 120px;
+}
+
+#org-name {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+#org-logo {
+	width: 100px;
+}
+
+#org-contact-info {
+	margin-top: 10px;
+	color: #5C2965;
+}
+
+a.org-contact {
+	color: #5C2965;
+}
+
+h5 {
+	font-weight: bold;
+}
+.page-content {
+	margin-left: 270px;
+	margin-right: 270px;
+}
+
+#content-container {
+	width: 1000px;
+}
+
+.sub-btn {
+	background-color: #5C2965;
+	border-radius: 0px;
+	border-color: #D3D3D3;
+	margin-right: 10px;
+}
+
+.reg-btn {
+	color: #5C2965;
+	margin-top: 30px;
+}
+
+label {
+	width: 200px; 
+	margin: 0 0 00 5px;
+	margin-right: 10px; 
+}
+
+span { 
+	display: block; 
+	margin: 0 0 0 -130px; 
+}
+
+input.form-control { 
+	width: 200px !important;
+	padding: 5px !important; 
+	border-radius: 0px !important;
+	height: 27px !important;
+}
+
+#filter-event {
+	color: #5C2965;
+	width: 100px;
+}
+
+#filter-place {
+	color: #5C2965;
+}
+
+#toListView {
+	
+	background-color: #5C2965;
+	color: #FFFFFF;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	bottom: 30%;
+	left: 2%;
+	float: center; 
+	position: fixed; 
+   
+
+}
+
+#submit {
+	background-color: #5C2965;
+	color: #FFFFFF;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	bottom: 2%;
+	right: 2%;
+	float: bottom; 
+	position: fixed; 
+}
+
+
+#cancel {
+	background-color: #FFFFFF;
+	color:  #5C2965;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	bottom: 2%;
+	right: 8%;
+	float: bottom; 
+	position: fixed; 
+	border-style: solid;
+	border-color: #5C2965;
+}
+
+#addImage {
+	background-color: #FFFFFF;
+	color:  #5C2965;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	position: relative; 
+	border-style: solid;
+	border-color: #5C2965;
+
+}
+
+.btn-week{
+	position: relative; 
+    height: 50px;
+	color:  #E9793D;
+	padding: 10px;
+	margin-top: 10px;
+	margin-right: 0px; 
+	margin-bottom: 10px; 	
+	font-size: 100%; 
+	background-color: #FFCBA4;
+	display: block; 
+	float:left; 
+	border: none; 
+	
+}
+
+.btn-week:hover{
+	background-color: #E9793D;
+	color:  #FFFFFF;
+	border: none; 
+}
+
+
+.map-container {
+	position: relative; 
+	float:center; 
+    height: 600px;
+	
+}
+
+/***************************** Event List View *******************/
+.event-img {
+	width: 200px;
+	height: 150px; 
+	border: 0px;
+
+}
+
+.event-container {
+	margin-left: 300px;
+}
+
+
+.event-display {
+	border-color: #696969;
+	border-style: solid;
+	border-width: .1em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.event-details {
+	color: #696969;
+	margin: 5px;
+}
+
+.title {
+	color: #5C2965;
+	font-weight: bold;
+}
+
+.host {
+	display: inline;
+	margin-left: 1px;
+	color: #D64857;
+	font-weight: bold;
+}
+
+.row {
+	margin-bottom: 20px;
+}
+
+.login {
+	border-color: red;
+}
+
+.map-btn {
+	color: #5C2965;
+	border-color: #5C2965;
+	background-color: white;
+	position: fixed;
+	top: 95%;
+	left: 20%;
+	width: 10%;
+	font-size: 18px;
+}
+
+/*.map-marker {
+	width: 15%;
+	margin-left: 5px;
+}*/
+
+.form-control {
+	border: 1px solid;
+	border-color: #5C2965;
+	width: 30em !important;
+	height: 3em !important;
+	margin: 1em;
+}
+
+textarea {
+	rows: 10;
+}
+
+#repeat {
+	background-color: #FFFFFF;
+	color:  #E9793D;
+	padding: 10px;
+	font-size: 150%; 
+	height : 50px;
+	position: relative; 
+	border-style: solid;
+	border-color: #E9793D;
+}
+
+/*****************************************************About Page**********************************************************/
+#about-container {
+	position: absolute;
+	top: 15%;
+	left: 25%;
+}
+
+#about-logo {
+	position: absolute;
+	top: 20%;
+	left: 25%;
+	width: 20%;
+}
+
+#about-text {
+	position: relative;
+	margin-top: 35%;
+	margin-left: 10%;
+	margin-right: 40%;
+	color: #575757;
+}
+
+#about-credits {
+	color: #575757;
+	text-align: center;
+	width: 350px;
+	margin-left: 230px;
+	margin-top: 100px;
+}
+
+.about-names {
+	color: #5C2965;
+	text-align: inline;
+	margin-right: 0px;
+}
+
+#about-copyrt {
+	margin-top: 30px !important;
+	margin-right: 270px !important;
+	margin-bottom: 100px;
+}
+
+
+/*****************************************Support Page***************************************************************************/
+.support-bullets {
+ 	list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#support-form {
+	color: #9B375E !important;
+}
+
+#support-email {
+	padding: 10px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-email::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-email:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-email:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-comment {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 600px;
+	border-color: #9B375E;
+	color: #9B375E;
+}
+
+/*Changing the text color of placeholder*/
+#support-comment::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #9B375E;
+}
+#support-comment:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9B375E;
+   opacity:  1;
+}
+#support-comment:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #9B375E;
+}
+
+#support-btn {
+	background-color: #9B375E !important;
+	color: white;
+	border-radius: 0px;
+}
+
+/* range slider on map view*/
+.time-slider {
+	padding-right:2%;
+	padding-left:2%;
+}
+
+#time {
+	font-size: 15px; 
+	margin-left: 2%; 
+	margin-bottom: 2%;
+	
+}
+
+
+/*#slider .ui-slider-handle {
+     
+      border: none;
+	  color: #5C2965;
+	 
+}*/
+
+/*#slider .ui-state-default {
+	border: 1px;
+	border-radius: 50px;  
+	height: 30px; 
+	background-image:none;
+	background: #9B375E; 
+ }
+*/
+ #slider .noUi-connect {
+	 border: 1px;
+	 background: #5C2965;  
+ }
+ 
+ #slider .noUi-handle { 
+	height: 30px;
+ 	border-radius: 10px;  
+	background: #9B375E;
+	float: center;  
+ }
+
+@media screen and (min-width: 1300px) {
+/* styles to apply on very narrow screens */
+	.event-display {
+		display: block;
+	}
+}
+
+
+ 
+
+

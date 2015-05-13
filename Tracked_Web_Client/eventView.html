@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>Event</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <img id="logo-logged-in" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+	  </div>
+	</nav>
+<!-- END Nav -->
+<!-- Left Side Bar -->
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="left">
+        	<li id="search-container">
+        		<div class="form-group">
+	            	<input id="search" type="text" class="form-control" name="search" placeholder="Search by keyword">
+	         		<input id="search-icon" type="image" src="img/search_icon.png">
+	        	</div>
+    		</li>
+        	<li id="m-item-filter">	
+				<div  id="m-filter">	
+					<label class="m-filter"><input type="radio" name="optradio"> Event </label>
+					<label class="m-filter" ><input type="radio" name="optradio"> Place </label>
+				</div>
+			</li>
+            <li><a id="m-item1" href="#">My Account</a></li>
+            <li><a id="m-item2" href="#">Add New</a></li>
+            <li><a id="m-item3" href="#">Manage Events</a></li>
+            <li><a id="m-item4" href="#">Surprise Me!</a></li>
+            <li><a id="m-item5" href="#">Support</a></li>
+            <li><a id="m-item6" href="#">About</a></li>
+        </ul>
+    </div>
+    <!-- Left Side Bar ENDS -->
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container" id="content-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="event-img-container">
+                        	<img id="event-img" src="img/act-banner.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="event-view-title">
+                    <h2 class="event-name">Asians Collaborating Together Conference</h2>
+                    <h3  class="event-view-details">Saturday, April 4 // ECC</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                    <div class="col-md-6">
+                        map view
+                    </div>
+                    <p class="event-location">Mary Gates Hall</p>
+                    <p class="event-address">3931 Brooklyn Avenue Northeast Seattle, WA 98105</p>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="right-sidebar">
+    		<div class="circular"><img class="org-circular" src="img/ace.png"></div>
+        </ul>
+    </div>
+</div>
+
+
+
+</body>
+</html>

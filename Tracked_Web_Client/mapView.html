@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Track'd</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/6.2.0/jquery.nouislider.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  
+
+	
+	
+	<!--jQuery UI Slider - Range slider</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">
+	<script src="http://code.jquery.com/ui/1.11.4/jqueryui/1.11.4/jquery-ui.js"></script>
+	<script src = "http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+	<script src ="js/jquery.ui.touch-punch.min.js"></script>-->
+	
+	<!-- Include jQuery Mobile stylesheets 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+	<!-- Include the jQuery library
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+	<!-- Include the jQuery Mobile library 
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+	<!--<script src="js/ion.rangeSlider.min.js"></script>
+	<link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet" type="text/css">-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
+	<!-- Use the 'all' version to get all documented features. -->
+    <!-- Includes wNumb, libLink and the pips add-on -->
+   <!-- <script src="jquery.nouislider.all.min.js"></script>-->
+   
+	 
+	 <!-- other page scripts -->
+      <link rel="import" href="common.html">
+  </head>
+  <body>
+	<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <img id="logo" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+      <center>
+	      <div class"login">
+		      <form class="navbar-form navbar-right" role="search">
+	                <label>
+	                	<span>UW E-mail</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="username" placeholder="">
+		                </div>
+	               </label>
+	                <label>
+	                	<span>Password</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="password" placeholder="">
+
+		                </div>
+	                </label>
+	            <input type="submit" value="Login" class="sub-btn"/>
+	            <input type="submit" value="Sign Up" class="reg-btn"/>
+		      </form>
+	      </div>
+      </center>
+	  </div>
+	</nav>
+<!-- END Nav -->
+
+	<div class="row">
+		<div id="filter">	
+			<h4>Filter</h4>
+			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
+	
+	</div>
+	
+   <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
+//create a global variable namespace based on usgs.gov
+//this is how JavaScript developers keep global variables
+//separate from one another when mixing code from different
+//sources on the same page
+var map = map || {};
+//gov.usgs = gov.usgs || {};
+var markersArray = [];
+var timeStartDefault= 8;
+var timeEndDefault =20;
+var events;
+var initialLocation;
+var uw = new google.maps.LatLng(47.6561432, -122.3062688);
+
+function initialize() {
+  var mapOptions = {
+	scaleControl:true,
+    zoom: 16
+  };
+  map = new google.maps.Map($('.map-container')[0],
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      map.setCenter(uw);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'You denied geolocation!';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    scaleControl:true,
+    zoom: 15,
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(uw);
+}
+  google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, "resize", function() {
+	var center = map.getCenter();
+	google.maps.event.trigger(map, "resize");
+	map.setCenter(center); 
+});
+
+
+//url for events json
+var eventsUrl = 'http://tracked-server-dev.elasticbeanstalk.com/events'
+
+//current events dataset
+var displayEvents; 
+
+//AJAX Error event handler
+//just alerts the user of the error
+$(document).ajaxError(function(event, jqXHR, err){
+    alert('Problem obtaining data: ' + jqXHR.statusText);
+})
+
+//$(function(){
+//console.log("Should try to make connection 2");
+
+	//getEvents();
+
+
+//});
+
+window.onload = function getEvents() {
+console.log("try to get events"); 
+	 $.ajax({
+			type: 'GET',
+			dataType: 'json',
+			cache: false,
+            crossDomain: true,
+			async:false,
+			headers: {          
+             Accept : "application/json; charset=utf-8",         
+           
+			}, 
+			
+            url: eventsUrl,
+			success: function (data) {
+					console.log("success getting data");
+					console.log(data);
+					console.log(data.events.length);
+					console.log(data.events); 
+					//var obj = jQuery.parseJSON(events); // convert the received response to a JSON object
+					//var obj = JSON.stringify(events); 
+					events = data.events; 
+					parseEvents(data.events);
+					
+			},
+			//jsonpCallback: "parseEvents",
+           // success: function(events){
+				//$('.message').html('Loading... <img src="img/loading.gif">');
+			//	displayEvents = events;
+			//	$('.message').html('Displaying ' + events.length + ' events'); 
+			//	addEventMarkers(events,map);
+			//	}, 
+            error: function (xhr, status, error) {
+              console.log("error");
+            }
+        });
+		
+	//$.getJSON(eventsUrl, 
+	//var infoWindow;
+	//var windowWidth = 
+	//var windowLength = 
+	//console.log(windowWidth);
+	//var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
+	//event.mapMarker = new google.maps.Marker({
+	//		map: map,
+	//		position: new google.maps.LatLng(47.655135, -122.314765),
+	//		icon: myIcon,
+			//src: 'img/marker30-01.png'
+			//scale: 20
+        //fillColor: "#F00",
+        //fillOpacity: 0.4,
+        //strokeWeight: 0.4
+			//	}
+	//		});
+	//		infoWindow = new google.maps.InfoWindow({
+	//		content: "ACT"
+	//		});
+	//		registerInfoWindow(map, event.mapMarker, infoWindow);
+	
+}
+
+function parseEvents(events){
+		
+		//if (events.Success) {
+			//alert(eventsObj.events.event_name);
+			
+			//displayEvents = jsonObj;
+				$('.message').html('Displaying ' +events.length + ' events'); 
+				addEventMarkers(events,map,timeStartDefault,timeEndDefault);
+		//} else {
+		//	console.log("damnit");
+		//	alert(events.details);
+		//}
+            
+				
+}
+function addEventMarkers(events, map, startTime,endTime) {
+	
+	var event; //current event data
+	var idx;	//loop counter
+	var infoWindow; //InfoWindow for Event
+	var eventStart;
+	var eventEnd;
+	var start;
+	var end;
+	for(idx = 0; idx < events.length; ++idx) {
+		e = events[idx];
+		console.log(idx);
+		start = new Date(e.start_time); 
+		end = new Date (e.end_time);
+		console.log("Date : " + start)	; 
+		sTime = start.getHours();
+		eTime = end.getHours();
+		console.log("S time : " + sTime);
+	//var windowWidth = 
+	//var windowLength = 
+	//console.log(windowWidth);
+	var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
+		console.log(sTime);
+		console.log(startTime);
+		console.log(eTime);
+		console.log(endTime);
+
+		if(e.loc_info){
+			if(sTime >= startTime && eTime <= endTime){
+				e.mapMarker = new google.maps.Marker({
+				map: map,
+				icon: myIcon,
+				position: new google.maps.LatLng(e.loc_info.lat, e.loc_info.long)
+				
+		
+				});
+				infoWindow = new google.maps.InfoWindow({
+				content: e.event_name
+				});
+				registerInfoWindow(map, e.mapMarker, infoWindow);
+				markersArray.push(e.mapMarker);
+			}
+			
+		}
+		
+	}
+}
+
+function clearAllMarkers(){
+	for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+	}
+	markersArray.length = 0;
+}
+function registerInfoWindow(map, marker, infoWindow) {
+	var iw = infoWindow; 
+	//marker.setIcon('img/marker30-01.png'); 
+	
+	
+	//google.maps.event.addListener(marker, 'mouseover', function() {
+	// if(iw){
+	//	 iw.close; 
+	//	}
+	//	iw = infoWindow;
+	//	infoWindow.open(map, marker);
+		
+	//});
+
+	//google.maps.event.addListener(marker, 'mouseout', function() {
+    //console.log("hello")
+    //iw.close();
+	//});
+	 
+	 google.maps.event.addListener(marker, 'click', function(){
+		if(iw){
+		 iw.close; 
+		}
+		iw = infoWindow;
+		infoWindow.open(map, marker);
+	});
+	
+	
+}
+
+ 
+ // With JQuery
+	var time = ["12AM","6AM","10AM","2PM","6PM","10PM"];
+	var startTime;
+	var endTime;
+   $(function() {
+		$("#slider").noUiSlider({
+			handles: 2,
+			   connect: true,
+			   start:[480,1200],
+			   step:5,
+			   range: {
+				'min': 0,
+				'max': 1439
+				}
+		}).on('slide', function(evt,val){
+			//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );	
+			var val0 =val[ 0 ];
+			var	val1 =val[ 1 ]; 
+			var	minutes0 = parseInt(val0 % 60, 10);			
+			var	hours0 = parseInt(val0 / 60 % 24, 10);
+			var	minutes1 = parseInt(val1 % 60, 10);
+			var	hours1 = parseInt(val1 / 60 % 24, 10);
+			startTime = getTime(hours0, minutes0);
+			endTime = getTime(hours1, minutes1);
+			console.log(startTime);
+			console.log(endTime);
+			$("#time").text(startTime + ' - ' + endTime);
+			clearAllMarkers();
+			addEventMarkers(events, map, hours0,hours1);
+		});
+	})( jQuery );
+	
+	function getTime(hours, minutes) {
+    var time = null;
+    var minutes = minutes + "";
+	
+	if (hours < 12) {
+		time = "AM";
+	} else { 
+		time = "PM";
+	}
+    if (hours == 0) {
+		hours = 12;
+	}
+    if (hours > 12) {
+		hours = hours - 12; 
+	}
+    if (minutes.length == 1) {
+		minutes = "0" + minutes;
+	}
+	console.log(hours + ":" + minutes + " " + time);
+    return (hours + ":" + minutes + " " + time);
+	}
+	
+ </script>
+   <div class ="map-container">
+	</div>
+	<button id = "toListView"  onclick ="location.href='http://trackd.info/index.html'">List View</button>
+	<div class = "time-slider">
+		</br>
+		<div id="slider"></div>
+	</div>
+		</br>
+       <p id="time">8:00 AM - 8:00 PM</p>	    
+  </body>
+</html>
+

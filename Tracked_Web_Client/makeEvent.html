@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Track'd</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrfqu9Nw7UW-ZJGYvJqXP7Y3J2q1JDAkE"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=true&callback=init"></script>-->
+	
+	 
+	 <!-- other page scripts -->
+      <link rel="import" href="common.html">
+
+  </head>
+  <body>
+	<!-- Nav Bar -->
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid" id="nav">
+	    <div class="navbar-header">
+		    <a class="navbar-brand" href="index.html">
+	        <img id="logo" alt="track'd" src="img/logo1.png">
+	      </a>
+	    </div>
+      <center>
+	      <div class"login">
+		      <form class="navbar-form navbar-right" role="search">
+	                <label>
+	                	<span>UW E-mail</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="username" placeholder="">
+		                </div>
+	               </label>
+	                <label>
+	                	<span>Password</span>
+		                <div class="form-group">
+		                    <input type="text" class="form-control" name="password" placeholder="">
+
+		                </div>
+	                </label>
+	            <input type="submit" value="Login" class="sub-btn"/>
+	            <input type="submit" value="Sign Up" class="reg-btn"/>
+		      </form>
+	      </div>
+      </center>
+	  </div>
+	</nav>
+<!-- END Nav -->
+
+	<div class="row">
+		<div id="filter">	
+			<h4>Filter</h4>
+			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
+	
+	</div>
+	
+  </body>
+</html>
+

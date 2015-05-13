@@ -1,0 +1,89 @@
+{
+	"event" : [ 
+		{"name" : "Asians Collaborating Together Conference (ACT)",
+		 "details" : "One of the biggest needs that our group has identified, is the need for leadership development within our community.  It is with excitement that we are announcing our second annual leadership focused conference called Asians Collaborating Together (ACT) Conference.  The event will focus on the current issues surrounding the Asian community and how we can develop leadership skills to overcome them.",
+		 "shortDescr" : "Conference. Come join us!",
+		 "where" : "Ethnic Cultural Center",
+		 "startDate" : "2015-04-04",
+		 "startTime" : "10:00:00",
+		 "endDate" : "2015-04-04",
+		 "endTime" : "16:00:00",
+		 "host" : "Asian Coalition for Equality", 
+		 "id" : "1213",
+		 "pic" : "ace",
+		 "lat" : "47.655135",
+		 "long" : "-122.314765"
+		},
+
+		{"name" : "Movie Night: Big Hero 6",
+		 "details" : "Finals are creeping up and we know that you are all tired from the studying and preparation of acing your classes. We will be playing Big Hero 6. So come join us, mingle, eat some snacks and relax a bit before you take on your finals! Bring your friends, especially people who are prospective Informatics majors!! Everyone is invited. :)",
+		 "shortDescr" : "Movie Night. Come join us!",
+		 "where" : "Savery Hall 260",
+		 "startDate" : "2015-03-13",
+		 "startTime" : "20:00:00",
+		 "endDate" : "2015-03-13",
+		 "endTime" : "22:00:00",
+		 "host" : "Women in Informatics (Winfo)", 
+		 "id" : "1224",
+		 "pic" : "winfo",
+		 "lat" : "47.655335",
+		 "long" : "-122.30352"
+		},
+
+		{"name" : "UW State of Emergency: Calling All Activists!",
+		 "details" : "We've walked out, we've debriefed, and now it's time to follow-through. Join the BSU this Wednesday as we discuss a plan of action in order to help push through specific points on the lists of demands circulated last week. We'll be discussing topics such as I-200, funding the ECC for the next year, and supporting Divest UW at the next Board of Regents Meeting. 
+			Bring your ideas and opinions. Together we can have a real impact. 
+			Please share this event with friends, students, and community members!",
+		  "shortDescr" : "Walk Out. Come join us!",
+		 "where" : "ECC Black Room",
+		 "startDate" : "2015-03-04",
+		 "startTime" : "18:00:00",
+		 "endDate" : "2015-03-04",
+		 "endTime" : "20:00:00",
+		 "host" : "Black Student Union (BSU)",
+		 "id" : "1355",
+		 "pic" : "bsu",
+		 "lat" : "47.655135",
+		 "long" : "-122.314765"
+		},
+
+	
+	],
+
+	"org" : [
+		{"name" : "Asian Coalition for Equality (ACE)",
+	     "category" : "communty",
+	     "foundDate" : "1969",
+		 "longDescr" : "Asian Coalition for Equality is a organization based out of the University of Washington whose mission is to engage self-identified Asian and Asian American individuals in conversations around inequality and civic engagement. Our organization was created in 1969 as a response to the discrimination of Asian individuals into the University of Washington.  Later on, Asian Coalition for Equality continued to act as an advocacy group for the Asian community in the Seattle area, taking part in the Oriental Student Sit-in, the Kingdom Protest, and preservation of the International District.",
+		 "shortDescr" : "Mission: Asian Coalition for Equality works to engage self-identified Asian and Asian American individuals, through conversations and events centering on our daily truths; we work to increase the visibility of our community.",
+		 "email" : "acequal@uw.edu",
+		 "website" : "https://students.washington.edu/acequal/",
+		 "id" : "1783",
+		 "pic" : "ace"
+		},
+
+		{"name" : "Black Student Union (BSU)",
+	     "category" : "education",
+	     "foundDate" : "1968",
+		 "shortDescr" : "We strive to be political voice of the African American student body and to provide cultural, social, and academic activities that promotes unity and solidarity.",
+		 "longDescr" : "Meetings are every Wednesday from 6pm-8pm. Meetings take place in Condon Hall on the 7th floor room 711E.",			
+		 "email" : "bsu@uw.edu",
+		 "website" : "https://www.facebook.com/bsu.uwseattle",
+		 "id" : "8673",
+		 "pic" : "bsu"
+		},
+
+		{"name" : "Women in Informatics (Winfo)",
+	     "category" : "community",
+	     "foundDate" : "2012",
+		 "shortDescr" : "We empower women to thrive as producers of technology by establishing and maintaining a network of women that offer encouragement and support",
+		 "longDescr" : "The purpose of this group shall be to empower women to thrive as producers of technology by establishing and maintaining a network of women that offer encouragement, support, and the ongoing knowledge needed or desired to succeed.",
+		 "email" : "winfo@uw.edu",
+		 "website" : "https://students.washington.edu/winfo/",
+		 "id" : "7645",
+		 "pic" : "winfo"
+		},
+
+		
+	]
+}
