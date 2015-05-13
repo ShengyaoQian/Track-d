@@ -115,7 +115,7 @@ app.use(function(err, req, res, next){
 });
 
 
-var __dirname = '..';
+var __dirname = '/home/ec2-user/Tracked_Web_Client';
 var path = '';
 
 app.use(express.static(__dirname + path));
