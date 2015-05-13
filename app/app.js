@@ -2,6 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+var __dirname = '..';
+var path = '';
+
+app.use(express.static(__dirname + path));
+
 app.get('/', function(req, res) {
     res.send('Hello Kitty');
 });
