@@ -25,8 +25,8 @@ var domain = process.env.DOMAIN;
 if (!domain || domain.length == 0)
     throw new Error('You must specify the domain name of this server via the DOMAIN environment variable!');
 
-var httpPort = process.env.HTTPPORT || 8081;
-var httpsPort = process.env.HTTPSPORT || 8443;
+var httpPort = process.env.HTTPPORT || 80;
+var httpsPort = process.env.HTTPSPORT || 443;
 
 //load public certificate and private key
 //used for HTTPS and for signing SAML requests
@@ -147,7 +147,7 @@ httpsServer.listen(httpsPort, function(){
 //the equivallent HTTPS URL instead
 var httpServer = http.createServer(function(req, res) {
     var redirUrl = 'https://' + domain;
-    if (httpsPort != 8443)
+    if (httpsPort != 443)
         redirUrl += ':' + httpsPort;
     redirUrl += req.url;
 
