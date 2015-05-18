@@ -25,7 +25,7 @@ var domain = process.env.DOMAIN;
 if (!domain || domain.length == 0)
     throw new Error('You must specify the domain name of this server via the DOMAIN environment variable!');
 
-var httpPort = process.env.HTTPPORT || 80;
+var httpPort = process.env.HTTPPORT || 8081;
 var httpsPort = process.env.HTTPSPORT || 443;
 
 //load public certificate and private key
