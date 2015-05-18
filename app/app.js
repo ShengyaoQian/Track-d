@@ -32,8 +32,8 @@ var httpsPort = process.env.HTTPSPORT || 443;
 //used for HTTPS and for signing SAML requests
 //put these in a /security subdirectory with the following names,
 //or edit the paths used in the following lines
-var publicCert = fs.readFileSync('./security/server-cert.pem', 'utf-8');
-var privateKey = fs.readFileSync('./security/server-pvk.pem', 'utf-8');
+var publicCert = fs.readFileSync('server-cert.pem', 'utf-8');
+var privateKey = fs.readFileSync('server-pvk.pem', 'utf-8');
 
 ///////////////////////////////////////////////////////////////////////////////
 // setup express application and register middleware
@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({type: 'application/json'}));
 app.use(cookieParser());
 app.use(session({
-    secret: fs.readFileSync('./security/session-secret.txt', 'utf-8'),
+    secret: fs.readFileSync('session-secret.txt', 'utf-8'),
     cookie: {secret: true}
 }));
 app.use(passport.initialize());
