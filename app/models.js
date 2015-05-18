@@ -6,7 +6,8 @@ var knex = require('knex')({
     user     : 'root',
     password : 'root',
     database : 'trackeddb',
-    charset  : 'utf8'
+    charset  : 'utf8',
+    timezone : 'utc'
   }
 });
 
