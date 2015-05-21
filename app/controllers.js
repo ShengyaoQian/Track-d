@@ -107,6 +107,7 @@ function get_orgs(collection, json_response) {
 };
 
 exports.post_event = function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     if (req.body) {
         json_request = req.body['Data'];
         if (json_request) {
