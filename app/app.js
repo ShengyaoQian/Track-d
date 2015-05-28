@@ -1,7 +1,7 @@
 "use strict;"
 
 const loginUrl = '/login';
-const loginCallbackUrl = '/login/callback';
+const loginCallbackUrl = '/';
 
 var http = require('http');                     //http server
 var https = require('https');                   //https server
@@ -26,7 +26,6 @@ if (!domain || domain.length == 0)
     throw new Error('You must specify the domain name of this server via the DOMAIN environment variable!');
 
 var httpPort = process.env.HTTPPORT || 8081;
-// var httpsPort = process.env.HTTPSPORT || 8443;
 
 //load public certificate and private key
 //used for HTTPS and for signing SAML requests
