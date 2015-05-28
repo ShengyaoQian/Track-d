@@ -26,7 +26,7 @@ if (!domain || domain.length == 0)
     throw new Error('You must specify the domain name of this server via the DOMAIN environment variable!');
 
 var httpPort = process.env.HTTPPORT || 8081;
-var httpsPort = process.env.HTTPSPORT || 8443;
+// var httpsPort = process.env.HTTPSPORT || 8443;
 
 //load public certificate and private key
 //used for HTTPS and for signing SAML requests
@@ -132,28 +132,27 @@ app.post('/post_event', require('./controllers.js').post_event);
 //
 
 //create the HTTPS server and pass the express app as the handler
-var httpsServer = https.createServer({
-    key: privateKey,
-    cert: publicCert
-}, app);
+// var httpsServer = https.createServer({
+//     key: privateKey,
+//     cert: publicCert
+// }, app);
 
-console.log('Hello Kitty');
 
-httpsServer.listen(httpsPort, function(){
-    console.log('Listening for HTTPS requests on port %d', httpsServer.address().port)
-});
+// httpsServer.listen(httpsPort, function(){
+//     console.log('Listening for HTTPS requests on port %d', httpsServer.address().port)
+// });
 
-//create an HTTP server that always redirects the user to 
-//the equivallent HTTPS URL instead
-var httpServer = http.createServer(function(req, res) {
-    var redirUrl = 'https://' + domain;
-    if (httpsPort != 8443)
-        redirUrl += ':' + httpsPort;
-    redirUrl += req.url;
+// //create an HTTP server that always redirects the user to 
+// //the equivallent HTTPS URL instead
+// var httpServer = http.createServer(function(req, res) {
+//     var redirUrl = 'https://' + domain;
+//     if (httpsPort != 8443)
+//         redirUrl += ':' + httpsPort;
+//     redirUrl += req.url;
 
-    res.writeHead(301, {'Location': redirUrl});
-    res.end();
-});
+//     res.writeHead(301, {'Location': redirUrl});
+//     res.end();
+// });
 
 httpServer.listen(httpPort, function() {
     console.log('Listening for HTTP requests on port %d, but will auto-redirect to HTTPS', httpServer.address().port);
