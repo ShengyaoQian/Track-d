@@ -96,17 +96,6 @@ app.use(uwshib.ensureAuth(loginUrl));
 // application routes
 //
 
-//root resource
-//just say hello!
-//eventually this will be a static middleware that returns our UI pages
-app.get('/', 
-    function(req, res) {
-        //req.user will contain the user object sent on by the
-        //passport.deserializeUser() function above
-        res.send('Hello ' + req.user.displayName + '!');
-    }
-);
-
 //general error handler
 //if any route throws, this will be called
 app.use(function(err, req, res, next){
