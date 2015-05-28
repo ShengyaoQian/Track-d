@@ -131,41 +131,9 @@ app.post('/post_event', require('./controllers.js').post_event);
 // web server creation and startup
 //
 
-//create the HTTPS server and pass the express app as the handler
-// var httpsServer = https.createServer({
-//     key: privateKey,
-//     cert: publicCert
-// }, app);
-
-
-// httpsServer.listen(httpsPort, function(){
-//     console.log('Listening for HTTPS requests on port %d', httpsServer.address().port)
-// });
-
-// //create an HTTP server that always redirects the user to 
-// //the equivallent HTTPS URL instead
-// var httpServer = http.createServer(function(req, res) {
-//     var redirUrl = 'https://' + domain;
-//     if (httpsPort != 8443)
-//         redirUrl += ':' + httpsPort;
-//     redirUrl += req.url;
-
-//     res.writeHead(301, {'Location': redirUrl});
-//     res.end();
-// });
-// var httpServer = http.createServer(function(request, response) {
-//   response.writeHead(200, {"Content-Type": "text/html"});
-//   response.end();
-// }, app);
 
 app.listen(httpPort, function() {
     console.log('Listening for HTTP requests on port %d, but will auto-redirect to HTTPS');
 });
 
 
-// var server = app.listen(8081, function () {
-//     var host = server.address().address;
-//     var port = server.address().port;
-
-//     console.log('Server running at http://%s:%s', host, port);
-// });
