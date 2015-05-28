@@ -153,10 +153,13 @@ app.post('/post_event', require('./controllers.js').post_event);
 //     res.writeHead(301, {'Location': redirUrl});
 //     res.end();
 // });
-var httpServer = http.createServer();
+// var httpServer = http.createServer(function(request, response) {
+//   response.writeHead(200, {"Content-Type": "text/html"});
+//   response.end();
+// }, app);
 
-httpServer.listen(httpPort, function() {
-    console.log('Listening for HTTP requests on port %d, but will auto-redirect to HTTPS', httpServer.address().port);
+app.listen(httpPort, function() {
+    console.log('Listening for HTTP requests on port %d, but will auto-redirect to HTTPS');
 });
 
 
