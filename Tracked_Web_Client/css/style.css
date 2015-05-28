@@ -34,8 +34,8 @@ h4 {
 
 .submission_form {
      position:relative;
-     margin: 250px; 
-     float:center; 
+     margin-left: 250px; 
+	 padding-right: 20%; 
 
 }
 
@@ -49,6 +49,7 @@ h4 {
 	padding: 0;
 	background-color: #e7e4e7;
 	font-weight: bold;
+	clear:right; 
 }
 
 .sidebar-nav li {
@@ -284,8 +285,7 @@ input.form-control {
 
 }
 
-.btn-week{
-	position: relative; 
+.btn-week{ 
     height: 50px;
 	color:  #E9793D;
 	padding: 10px;
@@ -294,9 +294,10 @@ input.form-control {
 	margin-bottom: 10px; 	
 	font-size: 100%; 
 	background-color: #FFCBA4;
-	display: block; 
+	display: inline; 
 	float:left; 
 	border: none; 
+	display:block; 
 	
 }
 
@@ -306,11 +307,12 @@ input.form-control {
 	border: none; 
 }
 
-
 .map-container {
 	position: relative; 
+	margin-left: 1%;
+	margin-right: 1%;
 	float:center; 
-    height: 600px;
+    height: 100%;
 	
 }
 

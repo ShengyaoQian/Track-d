@@ -85,7 +85,7 @@
 	<div class="row">
 		<div id="filter">	
 			<h4>Filter</h4>
-			<label id="filter-event"><input type="radio" name="optradio"> Event </label>
+			<label id="filter-event"><input type="radio" name="optradio" checked="checked"> Event </label>
 			<label id="filter-place"><input type="radio" name="optradio"> Place </label></div>
 	
 	</div>
@@ -116,19 +116,19 @@ function initialize() {
       mapOptions);
 
   // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+ // if(navigator.geolocation) {
+  //  navigator.geolocation.getCurrentPosition(function(position) {
+  //    var pos = new google.maps.LatLng(position.coords.latitude,
+  //                                     position.coords.longitude);
 
       map.setCenter(uw);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
+  //  }, function() {
+  //    handleNoGeolocation(true);
+  //  });
+//  } else {
     // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
+  //  handleNoGeolocation(false);
+ // }
 }
 
 function handleNoGeolocation(errorFlag) {
@@ -157,7 +157,7 @@ function handleNoGeolocation(errorFlag) {
 
 
 //url for events json
-var eventsUrl = 'http://tracked-server-dev.elasticbeanstalk.com/events'
+var eventsUrl = 'https://tracked-server-dev.elasticbeanstalk.com/events'
 
 //current events dataset
 var displayEvents; 
@@ -167,14 +167,6 @@ var displayEvents;
 $(document).ajaxError(function(event, jqXHR, err){
     alert('Problem obtaining data: ' + jqXHR.statusText);
 })
-
-//$(function(){
-//console.log("Should try to make connection 2");
-
-	//getEvents();
-
-
-//});
 
 window.onload = function getEvents() {
 console.log("try to get events"); 
@@ -252,6 +244,8 @@ function parseEvents(events){
             
 				
 }
+
+
 function addEventMarkers(events, map, startTime,endTime) {
 	
 	var event; //current event data
@@ -261,24 +255,22 @@ function addEventMarkers(events, map, startTime,endTime) {
 	var eventEnd;
 	var start;
 	var end;
+	var start_utc;
+	var end_utc;
+	var now; 
 	for(idx = 0; idx < events.length; ++idx) {
 		e = events[idx];
-		console.log(idx);
-		start = new Date(e.start_time); 
-		end = new Date (e.end_time);
+	    now = new Date();
+		start_utc = new Date(e.start_time);
+		end_utc = new Date(e.end_time);
+		start = new Date(start_utc.getTime() + (now.getTimezoneOffset()* 60000));
+		end = new Date (end_utc.getTime() + (now.getTimezoneOffset()* 60000));
 		console.log("Date : " + start)	; 
 		sTime = start.getHours();
 		eTime = end.getHours();
-		console.log("S time : " + sTime);
-	//var windowWidth = 
-	//var windowLength = 
-	//console.log(windowWidth);
+		console.log("Original: " +new Date(e.start_time));
+		//console.log("S time : " + sTime);
 	var myIcon = new google.maps.MarkerImage("img/marker30-01.png", null, null, null, new google.maps.Size(22,31));
-		console.log(sTime);
-		console.log(startTime);
-		console.log(eTime);
-		console.log(endTime);
-
 		if(e.loc_info){
 			if(sTime >= startTime && eTime <= endTime){
 				e.mapMarker = new google.maps.Marker({
@@ -289,7 +281,9 @@ function addEventMarkers(events, map, startTime,endTime) {
 		
 				});
 				infoWindow = new google.maps.InfoWindow({
-				content: e.event_name
+				content: '<a href="http://trackd.info/eventView.html">'+
+					 e.event_name +'</a></br><div id="shortDescr">'+
+					 e.event_desc_short +'</div>'
 				});
 				registerInfoWindow(map, e.mapMarker, infoWindow);
 				markersArray.push(e.mapMarker);
@@ -361,8 +355,8 @@ function registerInfoWindow(map, marker, infoWindow) {
 			var	hours1 = parseInt(val1 / 60 % 24, 10);
 			startTime = getTime(hours0, minutes0);
 			endTime = getTime(hours1, minutes1);
-			console.log(startTime);
-			console.log(endTime);
+			//console.log(startTime);
+			//console.log(endTime);
 			$("#time").text(startTime + ' - ' + endTime);
 			clearAllMarkers();
 			addEventMarkers(events, map, hours0,hours1);
