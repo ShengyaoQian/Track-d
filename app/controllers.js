@@ -1,6 +1,16 @@
 var models = require('./models');
 var async = require('async');
 
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
+
 exports.events_today = function(req, res) {
     var json_response = {'events': []};
     var Events = require('./models').Events;
@@ -106,19 +116,46 @@ function get_orgs(collection, json_response) {
     });
 };
 
+/* Sample request JSON:
+
+{"event_name":"brbgfcx",
+"optradio":"on",
+"org_name":"vef",
+"date":"06/14/2015",
+"s_time":"1:30 PM",
+"e_time":"4:30 PM",
+"room":"",
+"location":"Meany Hall for the Performing Arts, George Washington Lane Northeast, Seattle, WA, United States",
+"event_desc_short":"",
+"event_desc_long":"brgdf",
+"lat":"47.655709",
+"long":"-122.31056899999999",
+"start_time":"2015-06-14T20:30:00.000Z",
+"end_time":"2015-06-14T23:30:00.000Z"} 
+
+*/
+
 exports.post_event = function(req, res) {
     if (req.body) {
-        json_request = req.body['Data'];
-        if (json_request) {
-            var Event = require('./models').Event;
-            for (var i in json_request) {
-                var event = new Event(json_request[i]);
-                event.save();
-            }
-            res.send(json_request);
-        } else {
-            res.send('no data supplied');
-        }
+        var request_body = req.body;
+
+        var Event = require('./models').Event;
+        var uuid = guid();
+
+        json_request = {'event_id': uuid,
+                        'event_name': request_body.event_name,
+                        'start_time': request_body.start_time,
+                        'end_time': request_body.end_time,
+                        'event_desc_short': request_body.event_desc_short,
+                        'event_desc_long': request_body.event_desc_long,
+                        'location': request_body.location,
+                        'long': request_body.long,
+                        'lat': request_body.lat};
+
+        var event = new Event(json_request);
+
+        event.save();
+        res.send(json_request);
     } else {
         res.send('No request object');
     }   

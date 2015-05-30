@@ -27,6 +27,8 @@ if (!domain || domain.length == 0)
 
 var httpPort = process.env.HTTPPORT || 8081;
 
+// var httpPort = 8081;
+
 //load public certificate and private key
 //used for HTTPS and for signing SAML requests
 //put these in a /security subdirectory with the following names,
@@ -94,7 +96,6 @@ app.use(uwshib.ensureAuth(loginUrl));
 ///////////////////////////////////////////////////////////////////////////////
 // application routes
 //
-
 //general error handler
 //if any route throws, this will be called
 app.use(function(err, req, res, next){
