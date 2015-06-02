@@ -69,6 +69,7 @@ function get_events(collection, json_response) {
                         'event_desc_long': model.get('event_desc_long'),
                         'event_recur': model.get('event_recur'),
                         'picture_link': model.get('picture_link'),
+                        'org_name': model.get('org_name'),
                         'loc_info': loc_info};
         json_response.events.push(json_obj);
         
@@ -150,6 +151,7 @@ exports.post_event = function(req, res) {
                         'event_desc_long': request_body.event_desc_long,
                         'location': request_body.location,
                         'long': request_body.long,
+                        'org_name': request_body.org_name,
                         'lat': request_body.lat};
 
         var event = new Event(json_request);
