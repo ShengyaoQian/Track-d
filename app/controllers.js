@@ -26,7 +26,7 @@ exports.events_today = function(req, res) {
     next_day.setMinutes(0);
     next_day.setHours(0);
     events.query(function(qb) {
-        qb.where('start_time', '>', today).andWhere('end_time', '<', next_day);
+        qb.where('start_time', '>', today).andWhere('end_time', '<', next_day).orderBy('start_time', 'asc');
     }).fetch().then(function(collection) {
         get_events(collection, json_response);
     }).then(function() {
@@ -47,7 +47,7 @@ exports.events = function(req, res) {
     today.setHours(0);
 
     events.query(function(qb) {
-        qb.where('start_time', '>', today);
+        qb.where('start_time', '>', today).orderBy('start_time', 'asc');
     }).fetch().then(function(collection) {
         get_events(collection, json_response);
     }).then(function() {
